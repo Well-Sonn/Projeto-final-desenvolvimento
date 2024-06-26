@@ -1,10 +1,8 @@
 package controller;
 
 import java.util.List;
-
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
-
 
 public class UsuarioController {
     private UsuarioDAO usuarioDAO;

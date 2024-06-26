@@ -22,7 +22,7 @@ public class ReservaDAO {
     }
 
     public boolean criar(int idCliente, int idAmbiente, String horario) {
-        Reserva reserva = new Reserva(proximoId++, idCliente, idAmbiente, horario);
+        Reserva reserva = new Reserva(proximoId++, idCliente, idAmbiente, horario, horario, horario);
         listaReservas.add(reserva);
         salvarDados();
         return true;
@@ -80,7 +80,7 @@ public class ReservaDAO {
                 int idCliente = Integer.parseInt(dados[1]);
                 int idAmbiente = Integer.parseInt(dados[2]);
                 String horario = dados[3];
-                Reserva reserva = new Reserva(id, idCliente, idAmbiente, horario);
+                Reserva reserva = new Reserva(id, idCliente, idAmbiente, horario, horario, horario );
                 listaReservas.add(reserva);
                 proximoId = Math.max(proximoId, id + 1); // Atualiza o próximo ID
             }

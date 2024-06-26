@@ -5,13 +5,17 @@ import java.util.Scanner;
 
 import controller.AmbienteController;
 import controller.UsuarioController;
+import controller.ReservaController;
 import model.entity.Administrador;
 import model.entity.Ambiente;
 import model.entity.Cliente;
 import model.entity.Reserva;
 import model.entity.Usuario;
+import util.AppLogger;
 
 public class MainView {
+
+    private Usuario usuarioLogado;
 
     public void iniciarSistema() {
         Scanner scanner = new Scanner(System.in);
@@ -23,10 +27,11 @@ public class MainView {
         System.out.print("Digite sua senha: ");
         String senha = scanner.nextLine();
 
-        Usuario usuario = usuarioController.login(email, senha);
+        usuarioLogado = usuarioController.login(email, senha);
 
-        if (usuario != null) {
-            if (usuario instanceof Administrador) {
+        if (usuarioLogado != null) {
+            AppLogger.info(usuarioLogado.getEmail(), "Login realizado com sucesso.");
+            if (usuarioLogado instanceof Administrador) {
                 System.out.println("Bem-vindo, Administrador!");
                 while (true) {
                     System.out.println("1- GERIR AMBIENTE");
@@ -40,12 +45,13 @@ public class MainView {
                     } else if (opcao == 2) {
                         gerirUsuarios(scanner, usuarioController);
                     } else if (opcao == 3) {
+                        AppLogger.info(usuarioLogado.getEmail(), "Logout realizado.");
                         break;
                     } else {
                         System.out.println("Opção inválida. Tente novamente.");
                     }
                 }
-            } else if (usuario instanceof Cliente) {
+            } else if (usuarioLogado instanceof Cliente) {
                 System.out.println("Bem-vindo, Cliente!");
                 while (true) {
                     System.out.println("1- VER AMBIENTES DISPONÍVEIS");
@@ -58,10 +64,11 @@ public class MainView {
                     if (opcao == 1) {
                         listarAmbientesDisponiveis();
                     } else if (opcao == 2) {
-                        reservarAmbiente((Cliente) usuario);
+                        reservarAmbiente((Cliente) usuarioLogado);
                     } else if (opcao == 3) {
-                        listarMinhasReservas((Cliente) usuario);
+                        listarMinhasReservas((Cliente) usuarioLogado);
                     } else if (opcao == 4) {
+                        AppLogger.info(usuarioLogado.getEmail(), "Logout realizado.");
                         break;
                     } else {
                         System.out.println("Opção inválida. Tente novamente.");
@@ -69,6 +76,7 @@ public class MainView {
                 }
             }
         } else {
+            AppLogger.error(email, "Login inválido.");
             System.out.println("Login inválido. Tente novamente.");
         }
 
@@ -95,8 +103,10 @@ public class MainView {
 
                 boolean sucesso = ambienteController.cadastrarNovoAmbiente(nome, horarios);
                 if (sucesso) {
+                    AppLogger.info(usuarioLogado.getEmail(), "Cadastrou novo ambiente: " + nome);
                     System.out.println("Ambiente cadastrado com sucesso!");
                 } else {
+                    AppLogger.error(usuarioLogado.getEmail(), "Erro ao cadastrar ambiente: " + nome);
                     System.out.println("Erro ao cadastrar ambiente. Tente novamente.");
                 }
             } else if (opcao == 2) {
@@ -104,6 +114,7 @@ public class MainView {
                 for (Ambiente ambiente : ambientes) {
                     System.out.println("ID: " + ambiente.getId() + ", Nome: " + ambiente.getNome() + ", Horários: " + ambiente.getHorarios());
                 }
+                AppLogger.info(usuarioLogado.getEmail(), "Listou ambientes.");
             } else if (opcao == 3) {
                 System.out.print("Digite o ID do ambiente a ser alterado: ");
                 int id = scanner.nextInt();
@@ -115,8 +126,10 @@ public class MainView {
 
                 boolean sucesso = ambienteController.alterarAmbiente(id, nome, horarios);
                 if (sucesso) {
+                    AppLogger.info(usuarioLogado.getEmail(), "Alterou ambiente ID: " + id);
                     System.out.println("Ambiente alterado com sucesso!");
                 } else {
+                    AppLogger.error(usuarioLogado.getEmail(), "Erro ao alterar ambiente ID: " + id);
                     System.out.println("Erro ao alterar ambiente. Tente novamente.");
                 }
             } else if (opcao == 4) {
@@ -135,15 +148,19 @@ public class MainView {
                     if (confirmacao == 1) {
                         boolean sucesso = ambienteController.deletarAmbiente(id);
                         if (sucesso) {
+                            AppLogger.info(usuarioLogado.getEmail(), "Deletou ambiente ID: " + id);
                             System.out.println("Ambiente deletado com sucesso!");
                         } else {
+                            AppLogger.error(usuarioLogado.getEmail(), "Erro ao deletar ambiente ID: " + id);
                             System.out.println("Erro ao deletar ambiente. Tente novamente.");
                         }
                     } else {
                         System.out.println("Operação cancelada.");
+                        AppLogger.info(usuarioLogado.getEmail(), "Cancelou a deleção do ambiente ID: " + id);
                     }
                 } else {
                     System.out.println("Ambiente não encontrado.");
+                    AppLogger.warn(usuarioLogado.getEmail(), "Tentativa de deletar ambiente não encontrado com ID: " + id);
                 }
             } else if (opcao == 5) {
                 break;
@@ -156,26 +173,28 @@ public class MainView {
     private void reservarAmbiente(Cliente cliente) {
         AmbienteController ambienteController = new AmbienteController();
         Scanner scanner = new Scanner(System.in);
-
+    
         System.out.print("Digite o ID do ambiente que deseja reservar: ");
         int idAmbiente = scanner.nextInt();
         scanner.nextLine();  // Limpar o buffer
-
+    
         Ambiente ambiente = ambienteController.getAmbienteById(idAmbiente);
         if (ambiente != null) {
             System.out.print("Digite o horário desejado (ex: 09:00-13:00): ");
             String horario = scanner.nextLine();
-
+    
             boolean sucesso = cliente.reservarAmbiente(ambiente, horario);
             if (sucesso) {
+                AppLogger.info(cliente.getEmail(), "Reservou ambiente ID: " + idAmbiente + " no horário: " + horario);
                 System.out.println("Reserva realizada com sucesso!");
             } else {
-                System.out.println("Erro ao reservar ambiente. Verifique os horários disponíveis.");
+                AppLogger.error(cliente.getEmail(), "Erro ao reservar ambiente ID: " + idAmbiente + " no horário: " + horario);
+                System.out.println("HORÁRIO RESERVADO. ESCOLHA OUTRO HORÁRIO.");
             }
         } else {
+            AppLogger.warn(cliente.getEmail(), "Tentativa de reservar ambiente não encontrado com ID: " + idAmbiente);
             System.out.println("Ambiente não encontrado.");
         }
-
     }
 
     private void listarMinhasReservas(Cliente cliente) {
@@ -188,6 +207,7 @@ public class MainView {
                 System.out.println(reserva);
             }
         }
+        AppLogger.info(cliente.getEmail(), "Listou suas reservas.");
     }
 
     private void listarAmbientesDisponiveis() {
@@ -195,8 +215,12 @@ public class MainView {
 
         List<Ambiente> ambientes = ambienteController.listarAmbientes();
         for (Ambiente ambiente : ambientes) {
-            System.out.println("ID: " + ambiente.getId() + ", Nome: " + ambiente.getNome() + ", Horários: " + ambiente.getHorarios());
+            List<String> horariosDisponiveis = ambienteController.listarHorariosDisponiveis(ambiente.getId());
+            if (!horariosDisponiveis.isEmpty()) {
+                System.out.println("ID: " + ambiente.getId() + ", Nome: " + ambiente.getNome() + ", Horários disponíveis: " + horariosDisponiveis);
+            }
         }
+        AppLogger.info(usuarioLogado.getEmail(), "Listou ambientes disponíveis.");
     }
 
     private void gerirUsuarios(Scanner scanner, UsuarioController usuarioController) {
@@ -219,8 +243,10 @@ public class MainView {
 
                 boolean sucesso = usuarioController.cadastrarNovoUsuario(novoEmail, novaSenha, tipo);
                 if (sucesso) {
+                    AppLogger.info(usuarioLogado.getEmail(), "Cadastrou novo usuário: " + novoEmail);
                     System.out.println("Usuário cadastrado com sucesso!");
                 } else {
+                    AppLogger.error(usuarioLogado.getEmail(), "Erro ao cadastrar novo usuário: " + novoEmail);
                     System.out.println("Erro ao cadastrar usuário. Tente novamente.");
                 }
             } else if (opcao == 2) {
@@ -229,6 +255,7 @@ public class MainView {
                     String tipo = (u instanceof Administrador) ? "Administrador" : "Cliente";
                     System.out.println("ID " + u.getId() + ", Email: " + u.getEmail() + ", Tipo: " + tipo);
                 }
+                AppLogger.info(usuarioLogado.getEmail(), "Listou usuários.");
             } else if (opcao == 3) {
                 System.out.print("Digite o ID do usuário a ser alterado: ");
                 int id = scanner.nextInt();
@@ -242,8 +269,10 @@ public class MainView {
 
                 boolean sucesso = usuarioController.alterarUsuario(id, novoEmail, novaSenha, tipo);
                 if (sucesso) {
+                    AppLogger.info(usuarioLogado.getEmail(), "Alterou usuário ID: " + id);
                     System.out.println("Usuário alterado com sucesso!");
                 } else {
+                    AppLogger.error(usuarioLogado.getEmail(), "Erro ao alterar usuário ID: " + id);
                     System.out.println("Erro ao alterar usuário. Tente novamente.");
                 }
             } else if (opcao == 4) {
@@ -262,15 +291,19 @@ public class MainView {
                     if (confirmacao == 1) {
                         boolean sucesso = usuarioController.deletarUsuario(id);
                         if (sucesso) {
+                            AppLogger.info(usuarioLogado.getEmail(), "Deletou usuário ID: " + id);
                             System.out.println("Usuário deletado com sucesso!");
                         } else {
+                            AppLogger.error(usuarioLogado.getEmail(), "Erro ao deletar usuário ID: " + id);
                             System.out.println("Erro ao deletar usuário. Tente novamente.");
                         }
                     } else {
                         System.out.println("Operação cancelada.");
+                        AppLogger.info(usuarioLogado.getEmail(), "Cancelou a deleção do usuário ID: " + id);
                     }
                 } else {
                     System.out.println("Usuário não encontrado.");
+                    AppLogger.warn(usuarioLogado.getEmail(), "Tentativa de deletar usuário não encontrado com ID: " + id);
                 }
             } else if (opcao == 5) {
                 break;

@@ -5,12 +5,16 @@ public class Reserva {
     private int idCliente;
     private int idAmbiente;
     private String horario;
+    private String nomeCliente;
+    private String nomeAmbiente;
 
-    public Reserva(int id, int idCliente, int idAmbiente, String horario) {
+    public Reserva(int id, int idCliente, int idAmbiente, String horario, String nomeCliente, String nomeAmbiente) {
         this.id = id;
         this.idCliente = idCliente;
         this.idAmbiente = idAmbiente;
         this.horario = horario;
+        this.nomeCliente = nomeCliente;
+        this.nomeAmbiente = nomeAmbiente;
     }
 
     public int getId() {
@@ -45,10 +49,17 @@ public class Reserva {
         this.horario = horario;
     }
 
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public String getNomeAmbiente() {
+        return nomeAmbiente;
+    }
+
     @Override
     public String toString() {
-        return String.format("Reserva [ID: %d, Cliente ID: %d, Ambiente ID: %d, Horário: %s]",
-                             id, idCliente, idAmbiente, horario);
+        return String.format("Reserva [Cliente: %s, Ambiente: %s, Horário: %s]", nomeCliente, nomeAmbiente, horario);
     }
 
 }

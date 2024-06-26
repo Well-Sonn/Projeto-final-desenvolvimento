@@ -3,7 +3,9 @@ package model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.ReservaController;
 import model.dao.ReservaDAO;
+
 
 public class Cliente extends Usuario {
     private List<Reserva> minhasReservas;
@@ -14,13 +16,19 @@ public class Cliente extends Usuario {
     }
 
     public boolean reservarAmbiente(Ambiente ambiente, String horario) {
-        ReservaDAO reservaDAO = new ReservaDAO();
-        boolean sucesso = reservaDAO.criar(this.getId(), ambiente.getId(), horario);
-        if (sucesso) {
-            Reserva reserva = new Reserva(this.getId(), ambiente.getId(), id, horario);
-            return minhasReservas.add(reserva);
+        ReservaController reservaController = new ReservaController();
+        if (reservaController.isAmbienteReservado(ambiente.getId(), horario)) {
+            return false; // Ambiente já está reservado neste horário
+        } else {
+            ReservaDAO reservaDAO = new ReservaDAO();
+            boolean sucesso = reservaDAO.criar(this.getId(), ambiente.getId(), horario);
+            if (sucesso) {
+                Reserva reserva = new Reserva(0, this.getId(), ambiente.getId(), horario, this.getEmail(), ambiente.getNome());
+                minhasReservas.add(reserva);
+                return true;
+            }
+            return false;
         }
-        return false;
     }
 
     public List<Reserva> getMinhasReservasFromDAO() {
