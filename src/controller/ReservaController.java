@@ -1,9 +1,8 @@
 package controller;
 
+import java.util.List;
 import model.dao.ReservaDAO;
 import model.entity.Reserva;
-
-import java.util.List;
 
 public class ReservaController {
     private ReservaDAO reservaDAO;
@@ -12,19 +11,25 @@ public class ReservaController {
         this.reservaDAO = new ReservaDAO();
     }
 
-    public void addReserva(Reserva reserva) {
-        reservaDAO.addReserva(reserva);
+    public boolean criarReserva(int idCliente, int idAmbiente, String horario) {
+        return reservaDAO.criar(idCliente, idAmbiente, horario);
     }
 
-    public List<Reserva> getAllReservas() {
-        return reservaDAO.getAllReservas();
+    public List<Reserva> getReservasPorCliente(int idCliente) {
+        return reservaDAO.listarPorCliente(idCliente);
     }
 
-    public void updateReserva(Reserva reserva) {
-        reservaDAO.updateReserva(reserva);
+    public List<Reserva> getReservasPorAmbiente(int idAmbiente) {
+        return reservaDAO.listarPorAmbiente(idAmbiente);
     }
 
-    public void deleteReserva(String id) {
-        reservaDAO.deleteReserva(id);
+    public boolean isAmbienteReservado(int idAmbiente, String horario) {
+        List<Reserva> reservas = reservaDAO.listarPorAmbiente(idAmbiente);
+        for (Reserva reserva : reservas) {
+            if (reserva.getHorario().equals(horario)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

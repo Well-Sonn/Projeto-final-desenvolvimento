@@ -1,9 +1,8 @@
 package controller;
 
+import java.util.List;
 import model.dao.AmbienteDAO;
 import model.entity.Ambiente;
-
-import java.util.List;
 
 public class AmbienteController {
     private AmbienteDAO ambienteDAO;
@@ -12,19 +11,25 @@ public class AmbienteController {
         this.ambienteDAO = new AmbienteDAO();
     }
 
-    public void addAmbiente(Ambiente ambiente) {
-        ambienteDAO.addAmbiente(ambiente);
+    public boolean cadastrarNovoAmbiente(String nome, String horarios) {
+        Ambiente ambiente = new Ambiente(nome, horarios);
+        return ambienteDAO.cadastrar(ambiente);
     }
 
-    public List<Ambiente> getAllAmbientes() {
-        return ambienteDAO.getAllAmbientes();
+    public List<Ambiente> listarAmbientes() {
+        return ambienteDAO.listar();
     }
 
-    public void updateAmbiente(Ambiente ambiente) {
-        ambienteDAO.updateAmbiente(ambiente);
+    public Ambiente getAmbienteById(int id) {
+        return ambienteDAO.getById(id);
     }
 
-    public void deleteAmbiente(String id) {
-        ambienteDAO.deleteAmbiente(id);
+    public boolean alterarAmbiente(int id, String nome, String horarios) {
+        Ambiente ambiente = new Ambiente(nome, horarios);
+        return ambienteDAO.alterar(ambiente);
+    }
+
+    public boolean deletarAmbiente(int id) {
+        return ambienteDAO.deletar(id);
     }
 }

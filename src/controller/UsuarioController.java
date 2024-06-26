@@ -1,9 +1,10 @@
 package controller;
 
+import java.util.List;
+
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
 
-import java.util.List;
 
 public class UsuarioController {
     private UsuarioDAO usuarioDAO;
@@ -12,30 +13,27 @@ public class UsuarioController {
         this.usuarioDAO = new UsuarioDAO();
     }
 
-    public List<Usuario> getAllUsuarios() {
-        return usuarioDAO.getAllUsuarios();
+    public Usuario login(String email, String senha) {
+        return usuarioDAO.getUsuarioByEmailAndPassword(email, senha);
     }
 
-    public void addUsuario(Usuario usuario) {
-        List<Usuario> usuarios = usuarioDAO.getAllUsuarios();
-        usuarios.add(usuario);
-        usuarioDAO.saveAllUsuarios(usuarios);
+    public boolean cadastrarNovoUsuario(String email, String senha, String tipo) {
+        return usuarioDAO.cadastrarNovoUsuario(email, senha, tipo);
     }
 
-    public void updateUsuario(Usuario usuario) {
-        List<Usuario> usuarios = usuarioDAO.getAllUsuarios();
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getId().equals(usuario.getId())) {
-                usuarios.set(i, usuario);
-                break;
-            }
-        }
-        usuarioDAO.saveAllUsuarios(usuarios);
+    public List<Usuario> listarUsuarios() {
+        return usuarioDAO.listarUsuarios();
     }
 
-    public void deleteUsuario(String id) {
-        List<Usuario> usuarios = usuarioDAO.getAllUsuarios();
-        usuarios.removeIf(u -> u.getId().equals(id));
-        usuarioDAO.saveAllUsuarios(usuarios);
+    public boolean alterarUsuario(int id, String email, String senha, String tipo) {
+        return usuarioDAO.alterarUsuario(id, email, senha, tipo);
+    }
+
+    public boolean deletarUsuario(int id) {
+        return usuarioDAO.deletarUsuario(id);
+    }
+
+    public Usuario getUsuarioById(int id) {
+        return usuarioDAO.getUsuarioById(id);
     }
 }

@@ -1,5 +1,0 @@
-[
-    {"id": "1", "tipo": "Administrador", "nome": "cassiano", "email": "cassio@du.com.br", "senha": "cassio"},
-    {"id": "2", "tipo": "Cliente", "nome": "cassio", "email": "cassiano", "senha": "cassio"},
-    {"tipo": "well", "nome": "well", "email": "well", "senha": "well"}
-]

@@ -1,9 +1,33 @@
 package model.entity;
 
-import model.abstracts.AbstractUsuario;
+public class Usuario {
+    public int id;
+    private String email;
+    private String senha;
 
-public class Usuario extends AbstractUsuario {
-    public Usuario(String id, String nome, String email, String senha) {
-        super(id, nome, email, senha);
+    public Usuario(int id, String email, String senha) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

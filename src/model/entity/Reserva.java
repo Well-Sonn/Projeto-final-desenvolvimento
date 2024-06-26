@@ -1,49 +1,54 @@
 package model.entity;
 
 public class Reserva {
-    private String id;
-    private String usuarioId;
-    private String ambienteId;
+    private int id;
+    private int idCliente;
+    private int idAmbiente;
     private String horario;
 
-    public Reserva(String id, String usuarioId, String ambienteId, String horario) {
+    public Reserva(int id, int idCliente, int idAmbiente, String horario) {
         this.id = id;
-        this.usuarioId = usuarioId;
-        this.ambienteId = ambienteId;
+        this.idCliente = idCliente;
+        this.idAmbiente = idAmbiente;
         this.horario = horario;
     }
 
-    // Getters
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getUsuarioId() {
-        return usuarioId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getAmbienteId() {
-        return ambienteId;
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdAmbiente() {
+        return idAmbiente;
+    }
+
+    public void setIdAmbiente(int idAmbiente) {
+        this.idAmbiente = idAmbiente;
     }
 
     public String getHorario() {
         return horario;
     }
 
-    // Setters
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setUsuarioId(String usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
-    public void setAmbienteId(String ambienteId) {
-        this.ambienteId = ambienteId;
-    }
-
     public void setHorario(String horario) {
         this.horario = horario;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Reserva [ID: %d, Cliente ID: %d, Ambiente ID: %d, Horário: %s]",
+                             id, idCliente, idAmbiente, horario);
+    }
+
 }
