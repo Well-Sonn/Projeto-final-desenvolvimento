@@ -20,10 +20,14 @@ public class AmbienteDAO {
         carregarDados(); // Carregar os ambientes ao inicializar o DAO
     }
 
-    public boolean cadastrar(Ambiente ambiente) {
+    public boolean cadastrarAmbiente(Ambiente ambiente) {
+        // Incrementa o ID e adiciona o ambiente à lista em memória
         ambiente.setId(proximoId++);
         listaAmbientes.add(ambiente);
+
+        // Salva os dados no arquivo
         salvarDados();
+
         return true;
     }
 

@@ -23,7 +23,7 @@ public class Cliente extends Usuario {
             ReservaDAO reservaDAO = new ReservaDAO();
             boolean sucesso = reservaDAO.criar(this.getId(), ambiente.getId(), horario);
             if (sucesso) {
-                Reserva reserva = new Reserva(0, this.getId(), ambiente.getId(), horario, this.getEmail(), ambiente.getNome());
+                Reserva reserva = new Reserva(0, this.getId(), ambiente.getId(), horario, this.getEmail(), ambiente.getNome());  
                 minhasReservas.add(reserva);
                 return true;
             }

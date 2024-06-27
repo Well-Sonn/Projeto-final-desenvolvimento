@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class AppLogger {
-    private static final String LOG_FILE_PATH = "C:/DesenvolvimentoSFT/Projeto-final-desenvolvimento/logs/log.txt";
+    private static final String LOG_FILE_PATH = "logs\\log.txt";
 
     public static void log(String level, String user, String message) {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

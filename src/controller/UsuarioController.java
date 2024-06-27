@@ -3,12 +3,15 @@ package controller;
 import java.util.List;
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
+import model.entity.Ambiente;
 
 public class UsuarioController {
     private UsuarioDAO usuarioDAO;
+    private AmbienteController ambienteController;
 
     public UsuarioController() {
         this.usuarioDAO = new UsuarioDAO();
+        this.ambienteController = new AmbienteController();
     }
 
     public Usuario login(String email, String senha) {
@@ -33,5 +36,13 @@ public class UsuarioController {
 
     public Usuario getUsuarioById(int id) {
         return usuarioDAO.getUsuarioById(id);
+    }
+
+    public List<Ambiente> listarAmbientesDisponiveis() {
+        return ambienteController.listarAmbientes();
+    }
+
+    public List<String> listarHorariosDisponiveis(int idAmbiente) {
+        return ambienteController.listarHorariosDisponiveis(idAmbiente);
     }
 }

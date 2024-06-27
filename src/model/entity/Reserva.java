@@ -53,13 +53,21 @@ public class Reserva {
         return nomeCliente;
     }
 
+    public String setNomeCliente() {
+        return nomeCliente;
+    }
+
+    public String setNomeAmbiente() {
+        return nomeAmbiente;
+    }
+
     public String getNomeAmbiente() {
         return nomeAmbiente;
     }
 
     @Override
     public String toString() {
-        return String.format("Reserva [Cliente: %s, Ambiente: %s, Horário: %s]", nomeCliente, nomeAmbiente, horario);
+    return String.format("Reserva [Ambiente: %s, Horário: %s]", nomeAmbiente, horario);
     }
 
 }
