@@ -164,3 +164,94 @@
 [2024-06-27 11:44:31] [INFO] [User: cassio] Reservou ambiente ID: 1 no horário: 15:00-16:00
 [2024-06-27 11:44:57] [INFO] [User: cassio] Login realizado com sucesso.
 [2024-06-27 11:44:58] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 11:52:32] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 11:52:34] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 12:01:53] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 12:01:55] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 12:02:04] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 12:02:31] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 12:02:56] [INFO] [User: well] Cadastrou novo ambiente: Teste5
+[2024-06-27 12:03:01] [INFO] [User: well] Logout realizado.
+[2024-06-27 12:03:09] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 12:03:11] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 12:03:20] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 12:03:26] [WARN] [User: cassio] Tentativa de reservar ambiente não encontrado com ID: 2
+[2024-06-27 12:10:42] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 12:10:45] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 12:10:53] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 13:38:17] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 13:38:33] [INFO] [User: well] Alterou usuário ID: 2
+[2024-06-27 13:43:34] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 13:43:37] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:43:50] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:44:13] [INFO] [User: well] Alterou ambiente ID: 1
+[2024-06-27 13:44:25] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 13:44:29] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:44:57] [INFO] [User: well] Cadastrou novo ambiente: teste3
+[2024-06-27 13:45:00] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:45:17] [INFO] [User: well] Alterou ambiente ID: 2
+[2024-06-27 13:45:22] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:45:30] [INFO] [User: well] Logout realizado.
+[2024-06-27 13:45:38] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 13:45:40] [INFO] [User: well] Listou ambientes.
+[2024-06-27 13:45:47] [INFO] [User: well] Logout realizado.
+[2024-06-27 13:46:15] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 13:46:18] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 13:46:32] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 13:46:46] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 13:46:50] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 13:46:55] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 13:47:19] [INFO] [User: cassio] Reservou ambiente ID: 1 no horário: 10:00-11:00
+[2024-06-27 13:56:08] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 13:56:09] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 13:56:12] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 13:56:33] [INFO] [User: cassio] Reservou ambiente ID: 2 no horário: 09:00-10:00
+[2024-06-27 14:01:37] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:01:39] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:01:50] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:01:52] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:01:59] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:02:14] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 2 no horário: 09:00-10:00
+[2024-06-27 14:04:24] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:04:26] [WARN] [User: cassio] Tentativa de reservar ambiente não encontrado com ID: 3
+[2024-06-27 14:11:26] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:11:34] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:11:37] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:11:51] [INFO] [User: cassio] Reservou ambiente ID: 1 no horário: 10:00-11:00
+[2024-06-27 14:13:55] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:13:58] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:14:15] [INFO] [User: cassio] Reservou ambiente ID: 2 no horário: 09:00-10:00
+[2024-06-27 14:14:20] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:14:38] [INFO] [User: cassio] Reservou ambiente ID: 1 no horário: 09:00-10:00
+[2024-06-27 14:14:41] [WARN] [User: cassio] Tentativa de reservar ambiente não encontrado com ID: 6
+[2024-06-27 14:14:45] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:16:53] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:16:55] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:17:04] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:17:53] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:18:00] [INFO] [User: cassio] Reservou ambiente ID: 1 no horário: 14:00-15:00
+[2024-06-27 14:18:05] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:24:06] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:24:21] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:24:24] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:25:28] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 14:26:10] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:26:15] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:26:31] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 1 no horário: 10:00-11:00
+[2024-06-27 14:28:32] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:28:35] [INFO] [User: cassio] Listou ambientes disponíveis.
+[2024-06-27 14:28:43] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 1 no horário: 09:00-10:00
+[2024-06-27 14:28:55] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 1 no horário: 10:00-11:00
+[2024-06-27 14:31:21] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:31:34] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 2 no horário: 09:00-10:00
+[2024-06-27 14:33:30] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:33:37] [ERROR] [User: cassio] Erro ao reservar ambiente ID: 1 no horário: 09:00-10:00
+[2024-06-27 14:33:45] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:34:05] [INFO] [User: cassio] Reservou ambiente ID: 2 no horário: 18:00-19:00
+[2024-06-27 14:34:09] [INFO] [User: cassio] Listou suas reservas.
+[2024-06-27 14:35:38] [INFO] [User: well] Login realizado com sucesso.
+[2024-06-27 14:36:09] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:38:01] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:38:05] [WARN] [User: cassio] Tentativa de reservar ambiente não encontrado com ID: 6
+[2024-06-27 14:38:44] [INFO] [User: cassio] Login realizado com sucesso.
+[2024-06-27 14:38:47] [WARN] [User: cassio] Tentativa de reservar ambiente não encontrado com ID: 6

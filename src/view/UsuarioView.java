@@ -12,6 +12,8 @@ import util.AppLogger;
 public class UsuarioView {
 
     private Cliente usuarioLogado;
+    Scanner scanner = new Scanner(System.in);
+    int opcao = 0;
 
     public UsuarioView(Cliente usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
@@ -93,6 +95,6 @@ public class UsuarioView {
         }
 
         AppLogger.info(usuarioLogado.getEmail(), "Listou suas reservas.");
-        System.out.println("=========================================\n");
+        System.out.println("=============================================================\n");
     }
 }

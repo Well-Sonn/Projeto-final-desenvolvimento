@@ -26,10 +26,10 @@ public class AmbienteController {
         return ambienteDAO.getById(id);
     }
 
-    public boolean alterarAmbiente(int id, String nome, String horarios) {
-        String horariosConcatenados = String.join(";", horarios);
-        Ambiente ambiente = new Ambiente(nome, horariosConcatenados);
-        return ambienteDAO.alterar(ambiente);
+    public boolean alterarAmbiente(int id, String novoNome, String novosHorarios) {
+        Ambiente ambienteAlterado = new Ambiente(novoNome, novosHorarios);
+        ambienteAlterado.setId(id);
+        return ambienteDAO.alterar(ambienteAlterado);
     }
 
     public boolean deletarAmbiente(int id) {
@@ -49,4 +49,6 @@ public class AmbienteController {
 
         return horariosDisponiveis;
     }
+
+    
 }

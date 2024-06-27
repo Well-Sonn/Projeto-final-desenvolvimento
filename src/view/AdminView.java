@@ -16,9 +16,9 @@ public class AdminView {
 
     public void menuAdministrador(Scanner scanner) {
         while (true) {
-            System.out.println("\n===================================");
+            System.out.println("\n========================================================");
             System.out.println("          MENU ADMINISTRADOR       ");
-            System.out.println("===================================");
+            System.out.println("========================================================");
             System.out.println("1- GERIR AMBIENTE");
             System.out.println("2- GERIR USUÁRIOS");
             System.out.println("3- SAIR");

@@ -1,5 +1,6 @@
 package view;
 
+import java.io.Console;
 import java.util.Scanner;
 import controller.UsuarioController;
 import model.entity.Administrador;
@@ -19,13 +20,19 @@ public class MainView {
         System.out.println("     BEM-VINDO AO SISTEMA DE RESERVA DE AMBIENTES    ");
         System.out.println("========================================================");
 
+        Console console = System.console();
+        if (console == null) {
+            System.out.println("No console available. Please run this application from a console.");
+            return;
+        }
+
         boolean loginValido = false;
         while (!loginValido) {
             System.out.print("\n Digite seu email: ");
             String email = scanner.nextLine().trim().toLowerCase(); // Converte para minúsculas e remove espaços
 
-            System.out.print("\n Digite sua senha: ");
-            String senha = scanner.nextLine().trim(); // Remove espaços
+            char[] senhaArray = console.readPassword("\n Digite sua senha: ");
+            String senha = new String(senhaArray).trim(); // Converte char[] para String e remove espaços
 
             usuarioLogado = usuarioController.login(email, senha);
 
